@@ -1,4 +1,6 @@
-import LeftSidebar from "@/components/ui/LeftSidebar"
+import LeftSidebar from "@/components/LeftSidebar"
+import RightSidebar from "@/components/RightSidebar"
+import Image from 'next/image'
 
 export default function RootLayout({
     children,
@@ -21,8 +23,8 @@ export default function RootLayout({
                     </div>
                   </div>
                 </section>
-                
-                <p className="text-white-1">RIGHT SIDEBAR</p>
+
+                <RightSidebar />
             </main>
         </div>
     );
