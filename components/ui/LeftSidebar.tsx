@@ -10,6 +10,23 @@ const LeftSidebar = () => {
           <Image src='/icons/logo.svg' alt='logo' width={23} height={27} />
           <h1 className='text-24 font-extrabold text-white max-lg:hidden'>Podcaston</h1>
         </Link>
+
+        {[
+          {
+            route: '/profile',
+            label: 'Profile',
+            imgURL: '/icons/microphone.svg'
+          },
+          {
+            route: '/home',
+            label: 'Home',
+            imgURL: '/icons/home.svg'
+          }
+        ].map(({ route, label }) => {
+          return <Link href={route}>
+            {label}
+          </Link>
+        })}
       </nav>
     </section>
   )
