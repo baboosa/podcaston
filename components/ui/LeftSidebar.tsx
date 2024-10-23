@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
+import { sidebarLinks } from '@/constants'
 
 const LeftSidebar = () => {
   return (
@@ -11,18 +12,7 @@ const LeftSidebar = () => {
           <h1 className='text-24 font-extrabold text-white max-lg:hidden'>Podcaston</h1>
         </Link>
 
-        {[
-          {
-            route: '/profile',
-            label: 'Profile',
-            imgURL: '/icons/microphone.svg'
-          },
-          {
-            route: '/home',
-            label: 'Home',
-            imgURL: '/icons/home.svg'
-          }
-        ].map(({ route, label }) => {
+        {sidebarLinks.map(({ route, label }) => {
           return <Link href={route}>
             {label}
           </Link>
