@@ -1,5 +1,5 @@
-import { defineSchema, defineTable } from "convex/server"
-import { v } from "convex/values"
+import { defineSchema, defineTable } from "convex/server";
+import { v } from "convex/values";
 
 export default defineSchema({
   podcasts: defineTable({
@@ -22,11 +22,18 @@ export default defineSchema({
     .searchIndex('search_author', { searchField: 'author' })
     .searchIndex('search_title', { searchField: 'podcastTitle' })
     .searchIndex('search_body', { searchField: 'podcastDescription' }),
-
+    
   users: defineTable({
-      email: v.string(),
-      imageUrl: v.string(),
-      clerkId: v.string(),
-      name: v.string()
-    })
+    email: v.string(),
+    imageUrl: v.string(),
+    clerkId: v.string(),
+    name: v.string()
+  }),
+
+  tasks: defineTable({
+    _id: v.id('tasks'),
+    isCompleted: v.boolean(),
+    text: v.string(),
+    _creationTime: v.number(),
+  }),
 })
