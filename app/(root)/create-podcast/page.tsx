@@ -33,20 +33,30 @@ import { Loader } from "lucide-react"
 const voiceCategories = ['alloy', 'shimmer', 'nova', 'echo', 'fable', 'onyx']
 
 const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
+  podcastTitle: z.string().min(2),
+  podcastDescription: z.string().min(2)
 })
 
 const CreatePodcast = () => {
+  const [imagePropmt, setImagePropmt] = useState('')
+  const [imageStorageId, setImageStorageId] = useState<Id<"_storage"> | null>(null)
+  const [imageUrl, setImageUrl] = useState('')
+
+  const [audioUrl, setAudioUrl] = useState('')
+  const [audioStorageId, setAudioStorageId] = useState<Id<"_storage"> | null>(null)
+  const [audioDuration, setAudioDuration] = useState(0)
+
   const [voiceType, setVoiceType] = useState<string | null>(null)
+  const [voicePrompt, setVoicePrompt] = useState('')
+
   const [isSubmiting, setIsSubmiting] = useState(false)
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      podcastTitle: "",
+      podcastDescription: "",
     },
   })
 
@@ -129,12 +139,12 @@ const CreatePodcast = () => {
                 type="submit">
                 {isSubmiting ? (
                   <>
-                  <Loader size={20} className="animate-spin ml-2" />
+                    <Loader size={20} className="animate-spin ml-2" />
                     Submiting
                   </>
                 ) : (
-                    'Submit & Publish Podcast'
-                  )}
+                  'Submit & Publish Podcast'
+                )}
               </Button>
             </div>
           </div>
