@@ -28,6 +28,7 @@ import { useState } from "react"
 import { Textarea } from "@/components/ui/textarea"
 import GenerateThumbnail from "@/components/GenerateThumbnail"
 import GeneratePodcast from "@/components/GeneratePodcast"
+import { Loader } from "lucide-react"
 
 const voiceCategories = ['alloy', 'shimmer', 'nova', 'echo', 'fable', 'onyx']
 
@@ -39,6 +40,7 @@ const formSchema = z.object({
 
 const CreatePodcast = () => {
   const [voiceType, setVoiceType] = useState<string | null>(null)
+  const [isSubmiting, setIsSubmiting] = useState(false)
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -124,7 +126,16 @@ const CreatePodcast = () => {
             <div className="mt-10 w-full">
               <Button className="text-16 w-full
                bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1"
-                type="submit">Submit</Button>
+                type="submit">
+                {isSubmiting ? (
+                  <>
+                  <Loader size={20} className="animate-spin ml-2" />
+                    Submiting
+                  </>
+                ) : (
+                    'Submit & Publish Podcast'
+                  )}
+              </Button>
             </div>
           </div>
         </form>
