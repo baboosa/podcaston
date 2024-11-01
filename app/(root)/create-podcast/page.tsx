@@ -121,8 +121,12 @@ const CreatePodcast = () => {
             <GeneratePodcast />
 
             <GenerateThumbnail />
+            <div className="mt-10 w-full">
+              <Button className="text-16 w-full
+               bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1"
+                type="submit">Submit</Button>
+            </div>
           </div>
-          <Button type="submit">Submit</Button>
         </form>
       </Form>
     </section>
